@@ -1,3 +1,3 @@
 # Voyage
 
-A description of this package.
+A networking library that reduces the boilerplate from the Swift Foundation networking API.
