@@ -40,10 +40,15 @@ class Voyage {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
+        if let token = bearerToken {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
         request.httpBody = encodeBody(from: body)
         
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         
         let session = URLSession(configuration: .default)
         
