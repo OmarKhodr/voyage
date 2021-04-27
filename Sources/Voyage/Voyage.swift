@@ -17,15 +17,15 @@ class Voyage {
         
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
+                
                 fail(error)
-                return
-            }
-            
-            if let safeData = data {
-                //build model by parsing JSON data and adding location string, then pass that model to the delegate
+                
+            } else if let safeData = data {
+                
                 if let exchangeRates: Response = self.decodeResponse(from: safeData) {
                     completion(exchangeRates)
                 }
+                
             }
         }
         // Starting the task (it says resume() but it actually just starts it)
@@ -69,6 +69,7 @@ class Voyage {
     public func encodeBody<Model: Codable>(from model: Model) -> Foundation.Data? {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
+        
         do {
             let jsonData = try encoder.encode(model)
             return jsonData
