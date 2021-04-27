@@ -71,7 +71,7 @@ class Voyage {
         
     }
     
-    public func encodeBody<Model: Codable>(from model: Model) -> Foundation.Data? {
+    private func encodeBody<Model: Codable>(from model: Model) -> Foundation.Data? {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         
@@ -84,7 +84,7 @@ class Voyage {
         }
     }
     
-    public func decodeResponse<Model: Codable>(from data: Foundation.Data) -> Model? {
+    private func decodeResponse<Model: Codable>(from data: Foundation.Data) -> Model? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
