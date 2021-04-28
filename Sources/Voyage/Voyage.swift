@@ -18,12 +18,16 @@ class Voyage {
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 
-                fail(error)
+                DispatchQueue.main.async {
+                    fail(error)
+                }
                 
             } else if let safeData = data {
                 
                 if let response: Response = self.decodeResponse(from: safeData) {
-                    completion(response)
+                    DispatchQueue.main.async {
+                        completion(response)
+                    }
                 }
                 
             }
@@ -55,12 +59,16 @@ class Voyage {
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 
-                fail(error)
+                DispatchQueue.main.async {
+                    fail(error)
+                }
                 
             } else if let safeData = data {
                 
                 if let response: Response = self.decodeResponse(from: safeData) {
-                    completion(response)
+                    DispatchQueue.main.async {
+                        completion(response)
+                    }
                 }
                 
             }
