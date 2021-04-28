@@ -22,8 +22,8 @@ class Voyage {
                 
             } else if let safeData = data {
                 
-                if let exchangeRates: Response = self.decodeResponse(from: safeData) {
-                    completion(exchangeRates)
+                if let response: Response = self.decodeResponse(from: safeData) {
+                    completion(response)
                 }
                 
             }
